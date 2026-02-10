@@ -1,0 +1,63 @@
+<div class="add-item-form">
+  <h3>Add Item</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="itemName">Name *</label>
+      <input 
+        id="itemName" 
+        type="text" 
+        [(ngModel)]="name" 
+        name="itemName" 
+        required 
+        placeholder="Item name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="itemPrice">Price *</label>
+      <input 
+        id="itemPrice" 
+        type="number" 
+        [(ngModel)]="price" 
+        name="itemPrice" 
+        required 
+        min="0"
+        step="0.01"
+      />
+    </div>
+    <div class="form-group">
+      <label for="itemCategory">Category *</label>
+      <select 
+        id="itemCategory" 
+        [(ngModel)]="categoryId" 
+        name="itemCategory" 
+        required
+      >
+        <option [ngValue]="null" disabled>Select a category</option>
+        @for (cat of categories(); track cat.id) {
+          <option [ngValue]="cat.id">{{ cat.name }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="itemNotes">Notes</label>
+      <textarea 
+        id="itemNotes" 
+        [(ngModel)]="notes" 
+        name="itemNotes"
+        placeholder="Optional notes"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="itemImage">Image</label>
+      <input 
+        id="itemImage" 
+        type="file" 
+        (change)="onFileSelected($event)" 
+        accept="image/*"
+      />
+    </div>
+    <button type="submit" [disabled]="loading() || !name.trim() || categoryId === null">
+      {{ loading() ? 'Adding...' : 'Add Item' }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+<section class="items-panel">
+  <h2>Items</h2>
+  
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+  
+  @if (loading()) {
+    <div class="loading">Loading items...</div>
+  } @else {
+    <div class="items-list">
+      @for (item of items(); track item.id) {
+        <app-item-card-c [item]="item"></app-item-card-c>
+      } @empty {
+        <p>No items found.</p>
+      }
+    </div>
+  }
+</section>

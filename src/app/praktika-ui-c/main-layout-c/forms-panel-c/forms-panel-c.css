@@ -1,0 +1,10 @@
+.forms-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    overflow-y: auto;
+    background-color: #F5FBE6;
+    height: 80vh;
+    border-radius: 10px;
+    padding: 10px;
+}

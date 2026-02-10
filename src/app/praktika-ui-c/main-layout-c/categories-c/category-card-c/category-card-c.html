@@ -1,0 +1,38 @@
+<div class="category-card" (click)="selectCategory()">
+  <div class="category-card__content">
+    <h3>{{ category().name }}</h3>
+    <p>{{ category().description }}</p>
+    <span class="item-count">{{ category().itemCount }} items</span>
+  </div>
+  <div class="category-card-actions">
+    <button (click)="openDeleteModal(); $event.stopPropagation()">Delete</button>
+    <button (click)="openEditModal(); $event.stopPropagation()">Edit</button>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <app-modal-c [isOpen]="isDeleteModalOpen" [title]="'Delete Category'" (closeModal)="closeDeleteModal()">
+    <p>Are you sure you want to delete "{{ category().name }}"?</p>
+    <div class="modal-actions">
+      <button (click)="confirmDelete()">Yes, Delete</button>
+      <button (click)="closeDeleteModal()">Cancel</button>
+    </div>
+  </app-modal-c>
+
+  <!-- Edit Modal -->
+  <app-modal-c [isOpen]="isEditModalOpen" [title]="'Edit Category'" (closeModal)="closeEditModal()">
+    <form (ngSubmit)="saveEdit()">
+      <div class="form-group">
+        <label for="editName">Name</label>
+        <input id="editName" type="text" [(ngModel)]="editName" name="editName" required />
+      </div>
+      <div class="form-group">
+        <label for="editDescription">Description</label>
+        <textarea id="editDescription" [(ngModel)]="editDescription" name="editDescription"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="submit">Save</button>
+        <button type="button" (click)="closeEditModal()">Cancel</button>
+      </div>
+    </form>
+  </app-modal-c>
+</div>

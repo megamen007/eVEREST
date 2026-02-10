@@ -1,0 +1,53 @@
+<div class="item-card">
+  <div class="item-card-image">
+    @if (item().imageBase64) {
+      <img [src]="'data:image/png;base64,' + item().imageBase64" alt="{{ item().name }}" />
+    }
+  </div>
+  <div class="item-card-content">
+    <h3>{{ item().name }}</h3>
+    <p class="price">{{ item().price | currency }}</p>
+    <p class="notes">{{ item().notes }}</p>
+    <p class="category">{{ item().categoryName }}</p>
+    
+    <div class="item-card-actions">
+      <button (click)="openDeleteModal()">Delete</button>
+      <button (click)="openEditModal()">Edit</button>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <app-modal-c [isOpen]="isDeleteModalOpen" [title]="'Delete Item'" (closeModal)="closeDeleteModal()">
+    <p>Are you sure you want to delete "{{ item().name }}"?</p>
+    <div class="modal-actions">
+      <button (click)="confirmDelete()">Yes, Delete</button>
+      <button (click)="closeDeleteModal()">Cancel</button>
+    </div>
+  </app-modal-c>
+
+  <!-- Edit Modal -->
+  <app-modal-c [isOpen]="isEditModalOpen" [title]="'Edit Item'" (closeModal)="closeEditModal()">
+    <form (ngSubmit)="saveEdit()">
+      <div class="form-group">
+        <label for="editName">Name</label>
+        <input id="editName" type="text" [(ngModel)]="editName" name="editName" required />
+      </div>
+      <div class="form-group">
+        <label for="editPrice">Price</label>
+        <input id="editPrice" type="number" [(ngModel)]="editPrice" name="editPrice" required />
+      </div>
+      <div class="form-group">
+        <label for="editNotes">Notes</label>
+        <textarea id="editNotes" [(ngModel)]="editNotes" name="editNotes"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="editImage">Image</label>
+        <input id="editImage" type="file" (change)="onFileSelected($event)" accept="image/*" />
+      </div>
+      <div class="modal-actions">
+        <button type="submit">Save</button>
+        <button type="button" (click)="closeEditModal()">Cancel</button>
+      </div>
+    </form>
+  </app-modal-c>
+</div>

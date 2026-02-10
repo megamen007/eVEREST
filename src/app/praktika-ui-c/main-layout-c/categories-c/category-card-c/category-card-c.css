@@ -1,0 +1,12 @@
+.category-card {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.category-card-actions {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+     column-gap: 10px;
+}

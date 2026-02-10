@@ -1,0 +1,19 @@
+<section class="categories-panel">
+  <h2>Categories</h2>
+  
+  @if (error()) {
+    <div class="error-message">{{ error() }}</div>
+  }
+  
+  @if (loading()) {
+    <div class="loading">Loading categories...</div>
+  } @else {
+    <div class="categories-list">
+      @for (category of categories(); track category.id) {
+        <app-category-card-c [category]="category"></app-category-card-c>
+      } @empty {
+        <p>No categories found.</p>
+      }
+    </div>
+  }
+</section>

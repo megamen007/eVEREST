@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+html , body {
+    height: 100%;
+    margin: 0;
+}
+
+
+body {
+    color: #D25353;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: oblique;
+}
+
+button {
+    cursor: pointer;
+    color: antiquewhite;
+    background-color: #CF4B00;
+   
+}
+
+input  , select , button {
+    font: inherit;
+    border-radius: 3px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  
+}
+
+
+::-webkit-scrollbar-track {
+  background: antiquewhite;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #CF4B00;
+  border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #CF4B00;
+  border-radius: 5px;
+}

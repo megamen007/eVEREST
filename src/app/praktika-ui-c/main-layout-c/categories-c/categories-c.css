@@ -1,0 +1,15 @@
+.categories-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow: hidden;
+    background-color: #F5FBE6;
+    height: 80vh;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.categories-list {
+    overflow-y: auto;
+    flex: 1;
+}
